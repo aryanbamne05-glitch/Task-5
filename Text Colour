@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 1 – Interactive Buttons</title>
+<style>
+  body { font-family: Arial; margin: 20px; }
+  #text { font-size: 20px; margin: 10px 0; }
+  button, select { margin: 5px; padding: 5px 10px; }
+</style>
+</head>
+<body>
+
+<h2>Task 1 – Interactive Buttons</h2>
+<p id="text">Change my style dynamically!</p>
+
+<!-- Color buttons -->
+<button onclick="changeColor('red')">RED</button>
+<button onclick="changeColor('green')">GREEN</button>
+<button onclick="changeColor('blue')">BLUE</button>
+
+<!-- Font family dropdown -->
+<select id="fontSelect" onchange="changeFont(this.value)">
+  <option value="Arial">Arial</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Times New Roman">Times New Roman</option>
+</select>
+
+<!-- Font size buttons -->
+<button onclick="changeSize(2)">A+</button>
+<button onclick="changeSize(-2)">A-</button>
+
+<!-- Font style buttons (on mouseover) -->
+<button onmouseover="makeStyle('bold')">Bold</button>
+<button onmouseover="makeStyle('italic')">Italic</button>
+<button onmouseover="makeStyle('underline')">Underline</button>
+
+<script>
+let text = document.getElementById('text');
+
+function changeColor(color) {
+  text.style.color = color;
+}
+function changeFont(font) {
+  text.style.fontFamily = font;
+}
+function changeSize(delta) {
+  let size = parseInt(window.getComputedStyle(text).fontSize);
+  text.style.fontSize = (size + delta) + 'px';
+}
+function makeStyle(style) {
+  if (style === 'bold') text.style.fontWeight = 'bold';
+  if (style === 'italic') text.style.fontStyle = 'italic';
+  if (style === 'underline') text.style.textDecoration = 'underline';
+}
+</script>
+
+</body>
+</html>
